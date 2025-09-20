@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Seeds - Premium Seed Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #FF9800;
+            --light-color: #F1F8E9;
+            --dark-color: #1B5E20;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f1f1;
+            border-radius: 4px;
+            padding: 5px 10px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 5px;
+            outline: none;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1590065480004-477ef6d4d5de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Featured Products */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Categories Section */
+        .categories {
+            background-color: var(--light-color);
+            padding: 50px 0;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            position: relative;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+            transition: all 0.3s;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .main-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 300px;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .admin-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 999;
+        }
+
+        .admin-form {
+            margin-bottom: 20px;
+        }
+
+        .admin-form input, .admin-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Hosting Info Section */
+        .hosting-info {
+            background-color: #f5f5f5;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .hosting-info h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .hosting-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .hosting-option {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .hosting-option h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<!-- Top Bar -->
+<div class="top-bar">
+    <div class="container top-bar-content">
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> +1 234 567 8900</span>
+            <span><i class="fas fa-envelope"></i> info@DhamandeSeeds.com</span>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="container main-header">
+        <div class="logo">
+            <i class="fas fa-seedling"></i> Dhamande<span>Seeds</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link" data-target="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-target="products">Products</a></li>
+                <li><a href="#" class="nav-link" data-target="about">About</a></li>
+                <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
+                <li><a href="#" class="nav-link" data-target="hosting">Hosting Info</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">3</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Home Section -->
+<section id="home" class="page-section active">
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container hero-content">
+            <h1>Premium Quality Seeds for Your Garden</h1>
+            <p>Discover our extensive collection of high-yield, non-GMO seeds for vegetables, flowers, and herbs. Grow your dream garden with Elite Seeds.</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tomato Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Heirloom Tomato Seeds</h3>
+                    <p class="product-price">$4.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592415486684-4b2ced5c2013?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sunflower Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Giant Sunflower Seeds</h3>
+                    <p class="product-price">$3.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592670743331-d0b1f6be7c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Basil Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Organic Basil Seeds</h3>
+                    <p class="product-price">$2.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1579700846697-c0b71fcf6c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Carrot Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rainbow Carrot Seeds</h3>
+                    <p class="product-price">$3.49</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="categories">
+        <div class="container">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1596627114212-94ff24551b87?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vegetable Seeds">
+                    <div class="category-overlay">
+                        <h3>Vegetable Seeds</h3>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1596461404969-9b70b3e2a60d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Flower Seeds">
+                    <div class="category-overlay">
+                        <h3>Flower Seeds</h3>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1594282389623-02c5c4a6a754?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Herb Seeds">
+                    <div class="category-overlay">
+                        <h3>Herb Seeds</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The seeds I purchased from Elite Seeds had an excellent germination rate. The plants are healthy and producing abundant harvests. Highly recommended!"</p>
+                    <p class="testimonial-author">- Sarah Johnson, Home Gardener</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="page-section">
+    <div class="container">
+        <h2 class="section-title">Our Products</h2>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tomato Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Heirloom Tomato Seeds</h3>
+                    <p class="product-price">$4.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592415486684-4b2ced5c2013?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sunflower Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Giant Sunflower Seeds</h3>
+                    <p class="product-price">$3.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592670743331-d0b1f6be7c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Basil Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Organic Basil Seeds</h3>
+                    <p class="product-price">$2.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1579700846697-c0b71fcf6c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Carrot Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rainbow Carrot Seeds</h3>
+                    <p class="product-price">$3.49</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1596755094513-738a6c6b84d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Lavender Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">English Lavender Seeds</h3>
+                    <p class="product-price">$3.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pepper Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bell Pepper Seeds</h3>
+                    <p class="product-price">$3.29</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1586201375760-d5f08dd90e8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Rose Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rose Flower Seeds</h3>
+                    <p class="product-price">$5.99</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591871937571-1cda47111ab7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cucumber Seeds">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Organic Cucumber Seeds</h3>
+                    <p class="product-price">$3.79</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="page-section">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>Elite Seeds was founded in 2010 with a simple mission: to provide gardeners with the highest quality, non-GMO seeds that produce exceptional results. What started as a small family business has grown into a trusted source for gardeners across the country.</p>
+
+                <p>We carefully select and test all our seeds to ensure they meet our strict standards for germination rate, purity, and performance. Our team includes experienced horticulturists who are passionate about helping our customers succeed in their gardening endeavors.</p>
+
+                <h3>Our Values</h3>
+                <p>At Elite Seeds, we believe in sustainable gardening practices, preserving heirloom varieties, and promoting biodiversity. We're committed to offering seeds that are never genetically modified and are always open-pollinated when possible.</p>
+
+                <p>We take pride in our exceptional customer service and are always available to answer your gardening questions. Your success is our success!</p>
+            </div>
+
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1595986630530-969786c19b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Our Greenhouse">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="page-section">
+    <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Have questions about our products or need gardening advice? Reach out to us - we're happy to help!</p>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>123 Garden Street, Bloomington, IN 47401</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+1 (234) 567-8900</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@DhamandeSeeds.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Monday-Friday: 9am-5pm EST</p>
+                        <p>Saturday: 10am-3pm EST</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Hosting Info Section -->
+<section id="hosting" class="page-section">
+    <div class="container">
+        <h2 class="section-title">Hosting Information</h2>
+
+        <div class="hosting-info">
+            <h2>Free Hosting Options for Your Website</h2>
+            <p>There are several excellent free hosting options available for static websites like this one. Here are the best choices:</p>
+
+            <div class="hosting-options">
+                <div class="hosting-option">
+                    <h3>GitHub Pages</h3>
+                    <p>Free hosting directly from your GitHub repository. Perfect for static sites with custom domain support.</p>
+                    <p><strong>How to set up:</strong></p>
+                    <ol>
+                        <li>Create a GitHub account</li>
+                        <li>Create a new repository named username.github.io</li>
+                        <li>Upload your website files</li>
+                        <li>Enable GitHub Pages in repository settings</li>
+                    </ol>
+                </div>
+
+                <div class="hosting-option">
+                    <h3>Netlify</h3>
+                    <p>Free tier with continuous deployment from Git, form handling, and HTTPS.</p>
+                    <p><strong>How to set up:</strong></p>
+                    <ol>
+                        <li>Create a Netlify account</li>
+                        <li>Drag and drop your website folder</li>
+                        <li>Or connect your GitHub repository for auto-deploy</li>
+                        <li>Configure your custom domain</li>
+                    </ol>
+                </div>
+
+                <div class="hosting-option">
+                    <h3>Vercel</h3>
+                    <p>Excellent platform for static sites with global CDN and automatic SSL.</p>
+                    <p><strong>How to set up:</strong></p>
+                    <ol>
+                        <li>Create a Vercel account</li>
+                        <li>Import your project from GitHub/GitLab</li>
+                        <li>Deploy with zero configuration</li>
+                        <li>Add your custom domain</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h3>Connecting a Custom Domain</h3>
+            <p>To use your own domain name (like DhamandeSeeds.in):</p>
+            <ol>
+                <li>Purchase a domain from a registrar (Namecheap, GoDaddy, etc.)</li>
+                <li>In your hosting platform's settings, add your custom domain</li>
+                <li>Update your domain's DNS settings:
+                    <ul>
+                        <li>For GitHub Pages: Create A records pointing to 185.199.108.153</li>
+                        <li>For Netlify/Vercel: Use CNAME record pointing to your site's URL</li>
+                    </ul>
+                </li>
+                <li>Wait for DNS propagation (up to 48 hours)</li>
+            </ol>
+
+            <h3>Admin Panel for Static Sites</h3>
+            <p>Since we're not using a database, you can manage content through:</p>
+            <ul>
+                <li>JavaScript-based admin panel (like the one included in this demo)</li>
+                <li>Git-based CMS (update content directly in GitHub)</li>
+                <li>Headless CMS options like Netlify CMS or Forestry</li>
+                <li>Local storage for small amounts of data</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Elite Seeds</h3>
+                <p>We provide high-quality, non-GMO seeds for gardeners who value sustainability and biodiversity.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" class="nav-link" data-target="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-target="products">Products</a></li>
+                    <li><a href="#" class="nav-link" data-target="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get special offers, free giveaways, and gardening tips.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Your Email Address">
+                    <button class="btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Elite Seeds. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Admin Panel Toggle -->
+<div class="admin-toggle">
+    <i class="fas fa-cog"></i>
+</div>
+
+<!-- Admin Panel -->
+<div class="admin-panel">
+    <h2>Admin Panel</h2>
+    <div class="admin-form">
+        <h3>Add New Product</h3>
+        <input type="text" id="product-title" placeholder="Product Title">
+        <input type="number" id="product-price" placeholder="Price" step="0.01">
+        <textarea id="product-description" placeholder="Description"></textarea>
+        <input type="text" id="product-image" placeholder="Image URL">
+        <button class="btn" id="add-product">Add Product</button>
+    </div>
+
+    <div class="admin-form">
+        <h3>Manage Content</h3>
+        <select id="content-selector">
+            <option value="home-hero">Homepage Hero</option>
+            <option value="about-text">About Text</option>
+            <option value="contact-info">Contact Information</option>
+        </select>
+        <textarea id="content-editor" placeholder="Edit content here..."></textarea>
+        <button class="btn" id="save-content">Save Changes</button>
+    </div>
+</div>
+
+<script>
+    // Navigation between pages
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.getAttribute('data-target');
+
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target page
+            document.getElementById(target).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    });
+
+    // Toggle Admin Panel
+    document.querySelector('.admin-toggle').addEventListener('click', function() {
+        const adminPanel = document.querySelector('.admin-panel');
+        adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Add Product Functionality
+    document.getElementById('add-product').addEventListener('click', function() {
+        const title = document.getElementById('product-title').value;
+        const price = document.getElementById('product-price').value;
+        const description = document.getElementById('product-description').value;
+        const imageUrl = document.getElementById('product-image').value;
+
+        if (title && price && imageUrl) {
+            // Create new product card
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${imageUrl}" alt="${title}">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${title}</h3>
+                    <p class="product-price">$${price}</p>
+                    <p>${description}</p>
+                    <div class="product-actions">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            `;
+
+            // Add to products grid
+            document.querySelector('.products-grid').appendChild(productCard);
+
+            // Clear form
+            document.getElementById('product-title').value = '';
+            document.getElementById('product-price').value = '';
+            document.getElementById('product-description').value = '';
+            document.getElementById('product-image').value = '';
+
+            // Close admin panel
+            document.querySelector('.admin-panel').style.display = 'none';
+
+            alert('Product added successfully!');
+        } else {
+            alert('Please fill in all required fields: Title, Price, and Image URL');
+        }
+    });
+
+    // Content Management
+    document.getElementById('save-content').addEventListener('click', function() {
+        const selector = document.getElementById('content-selector').value;
+        const content = document.getElementById('content-editor').value;
+
+        alert(`Content for ${selector} saved! (This would update the site in a real implementation)`);
+
+        // Clear editor
+        document.getElementById('content-editor').value = '';
+    });
+
+    // Simple image slider for testimonials
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+
+    function showTestimonial(index) {
+        testimonials.forEach((testimonial, i) => {
+            testimonial.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    // Initially show first testimonial
+    showTestimonial(currentTestimonial);
+
+    // Rotate testimonials every 5 seconds
+    setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }, 5000);
+</script>
+</body>
+</html>
