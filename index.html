@@ -3,7 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
     <title>gromantra Seeds - Premium Seed Collection</title>
+    <meta name="description" content="Gromantra Seeds offers premium quality, non-GMO vegetable, flower, and herb seeds. Shop our extensive collection for your garden with guaranteed high germination rates.">
+    <meta name="keywords" content="gromantra seeds, vegetable seeds, flower seeds, herb seeds, gardening, non-GMO seeds, premium seeds, India">
+    <meta name="author" content="Gromantra Seeds">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gromantra Seeds - Premium Quality Seeds for Your Garden">
+    <meta property="og:description" content="Discover our extensive collection of high-yield, non-GMO seeds for vegetables, flowers, and herbs. Grow your dream garden with Gromantra Seeds.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://gromantra.in/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1590065480004-477ef6d4d5de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://gromantra.in/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Gromantra Seeds",
+            "url": "http://gromantra.in/",
+            "logo": "Gromantra_Logo_Files/Image/Primary_Logo/JPEG/GM_Primary_Logo_White_BG.jpg",
+            "description": "Premium quality, seeds and herb seeds",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "H. No 142/2 At Tapowan",
+                "addressLocality": "Rajur Tehsil Bhokardan Dist Jalna",
+                "postalCode": "431208",
+                "addressCountry": "IN"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-810-934-2909",
+                "contactType": "Customer service"
+            }
+        }
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -109,13 +152,35 @@
             padding: 15px 0;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .logo {
+            height: 60px;
+            width: 180px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .logo-image {
+            height: 180px; /* 3x the visible height */
+            width: 100%;
+            object-fit: cover;
+            position: relative;
+            top: -60px; /* Show only the middle third */
+        }
+
+        .logo-text {
             font-size: 1.8rem;
             font-weight: bold;
             color: var(--dark-color);
         }
 
-        .logo span {
+        .logo-text span {
             color: var(--primary-color);
         }
 
@@ -501,6 +566,11 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         /* Admin Panel Styles */
@@ -568,8 +638,13 @@
 <!-- Header -->
 <header>
     <div class="container main-header">
-        <div class="logo">
-            <i class="fas fa-seedling"></i> Gromantra<span>Seeds</span>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="Gromantra_Logo_Files/Image/Primary_Logo/JPEG/GM_Primary_Logo_White_BG.jpg" alt="Gromantra Seeds Logo" class="logo-image">
+            </div>
+            <div class="logo-text">
+                Gromantra<span>Seeds</span>
+            </div>
         </div>
         <nav>
             <ul>
@@ -598,7 +673,7 @@
     <div class="hero">
         <div class="container hero-content">
             <h1>Premium Quality Seeds for Your Garden</h1>
-            <p>Discover our extensive collection of high-yield, non-GMO seeds for vegetables, flowers, and herbs. Grow your dream garden with gromantra Seeds.</p>
+            <p>Discover our extensive collection of high-yield, non-GMO seeds for vegetables, flowers, and herbs. Grow your dream garden with Gromantra Seeds.</p>
             <a href="#" class="btn">Shop Now</a>
         </div>
     </div>
@@ -614,7 +689,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Heirloom Tomato Seeds</h3>
-                    <p class="product-price">$4.99</p>
+                    <p class="product-price">₹199</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -629,7 +704,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Giant Sunflower Seeds</h3>
-                    <p class="product-price">$3.99</p>
+                    <p class="product-price">₹149</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -644,7 +719,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Organic Basil Seeds</h3>
-                    <p class="product-price">$2.99</p>
+                    <p class="product-price">₹99</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -659,7 +734,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Rainbow Carrot Seeds</h3>
-                    <p class="product-price">$3.49</p>
+                    <p class="product-price">₹179</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -704,8 +779,12 @@
             <h2 class="section-title">What Our Customers Say</h2>
             <div class="testimonial-slider">
                 <div class="testimonial">
-                    <p class="testimonial-text">"The seeds I purchased from gromantra Seeds had an excellent germination rate. The plants are healthy and producing abundant harvests. Highly recommended!"</p>
+                    <p class="testimonial-text">"The seeds I purchased from Gromantra Seeds had an excellent germination rate. The plants are healthy and producing abundant harvests. Highly recommended!"</p>
                     <p class="testimonial-author">- Sarah Johnson, Home Gardener</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"I've been buying from Gromantra for 3 years now. Their seeds are always fresh and the customer service is exceptional. My garden has never looked better!"</p>
+                    <p class="testimonial-author">- Rajesh Kumar, Professional Gardener</p>
                 </div>
             </div>
         </div>
@@ -725,7 +804,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Heirloom Tomato Seeds</h3>
-                    <p class="product-price">$4.99</p>
+                    <p class="product-price">₹199</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -740,7 +819,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Giant Sunflower Seeds</h3>
-                    <p class="product-price">$3.99</p>
+                    <p class="product-price">₹149</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -755,7 +834,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Organic Basil Seeds</h3>
-                    <p class="product-price">$2.99</p>
+                    <p class="product-price">₹99</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -770,7 +849,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Rainbow Carrot Seeds</h3>
-                    <p class="product-price">$3.49</p>
+                    <p class="product-price">₹179</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -785,7 +864,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">English Lavender Seeds</h3>
-                    <p class="product-price">$3.99</p>
+                    <p class="product-price">₹199</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -800,7 +879,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Bell Pepper Seeds</h3>
-                    <p class="product-price">$3.29</p>
+                    <p class="product-price">₹129</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -815,7 +894,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Rose Flower Seeds</h3>
-                    <p class="product-price">$5.99</p>
+                    <p class="product-price">₹299</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -830,7 +909,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Organic Cucumber Seeds</h3>
-                    <p class="product-price">$3.79</p>
+                    <p class="product-price">₹179</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
                         <a href="#"><i class="fas fa-cart-plus"></i></a>
@@ -849,12 +928,12 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Our Story</h3>
-                <p>gromantra Seeds was founded in 2010 with a simple mission: to provide gardeners with the highest quality, non-GMO seeds that produce exceptional results. What started as a small family business has grown into a trusted source for gardeners across the country.</p>
+                <p>Gromantra Seeds was founded in 2010 with a simple mission: to provide gardeners with the highest quality, non-GMO seeds that produce exceptional results. What started as a small family business has grown into a trusted source for gardeners across the country.</p>
 
                 <p>We carefully select and test all our seeds to ensure they meet our strict standards for germination rate, purity, and performance. Our team includes experienced horticulturists who are passionate about helping our customers succeed in their gardening endeavors.</p>
 
                 <h3>Our Values</h3>
-                <p>At gromantra Seeds, we believe in sustainable gardening practices, preserving heirloom varieties, and promoting biodiversity. We're committed to offering seeds that are never genetically modified and are always open-pollinated when possible.</p>
+                <p>At Gromantra Seeds, we believe in sustainable gardening practices, preserving heirloom varieties, and promoting biodiversity. We're committed to offering seeds that are never genetically modified and are always open-pollinated when possible.</p>
 
                 <p>We take pride in our exceptional customer service and are always available to answer your gardening questions. Your success is our success!</p>
             </div>
@@ -882,8 +961,7 @@
                     </div>
                     <div>
                         <h4>Address</h4>
-                        <p>H. No 142/2
-                            At tapowan   Post Rajur Tehsil Bhokardan Dist Jalna 431208</p>
+                        <p>H. No 142/2 At Tapowan<br>Post Rajur Tehsil Bhokardan<br>Dist Jalna 431208</p>
                     </div>
                 </div>
 
@@ -913,8 +991,8 @@
                     </div>
                     <div>
                         <h4>Business Hours</h4>
-                        <p>Monday-Friday: 9am-5pm EST</p>
-                        <p>Saturday: 10am-3pm EST</p>
+                        <p>Monday-Friday: 9am-5pm</p>
+                        <p>Saturday: 10am-3pm</p>
                     </div>
                 </div>
             </div>
@@ -933,13 +1011,12 @@
     </div>
 </section>
 
-
 <!-- Footer -->
 <footer>
     <div class="container">
         <div class="footer-content">
             <div class="footer-column">
-                <h3>gromantra Seeds</h3>
+                <h3>Gromantra Seeds</h3>
                 <p>We provide high-quality, non-GMO seeds for gardeners who value sustainability and biodiversity.</p>
             </div>
 
@@ -975,7 +1052,7 @@
         </div>
 
         <div class="copyright">
-            <p>&copy; 2023 gromantra Seeds. All rights reserved.</p>
+            <p>&copy; 2023 Gromantra Seeds. All rights reserved.</p>
         </div>
     </div>
 </footer>
@@ -1052,7 +1129,7 @@
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">${title}</h3>
-                    <p class="product-price">$${price}</p>
+                    <p class="product-price">₹${price}</p>
                     <p>${description}</p>
                     <div class="product-actions">
                         <a href="#" class="btn">View Details</a>
