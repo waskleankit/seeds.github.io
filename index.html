@@ -753,6 +753,125 @@
                 display: none !important;
             }
         }
+
+        /* Modal Styles for View Details */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-header {
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .crop-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .crop-details-table th,
+        .crop-details-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .crop-details-table th {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .crop-details-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* View Details Button */
+        .view-details-btn {
+            background-color: var(--accent-color);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .view-details-btn:hover {
+            background-color: #F57C00;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 20px;
+            }
+
+            .crop-details-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -791,7 +910,7 @@
         </nav>
         <div class="header-actions">
             <div class="search-box">
-                <input type="text" placeholder="Search...">
+                <input type="text" placeholder="Search..." id="search-input">
                 <i class="fas fa-search"></i>
             </div>
             <div class="cart-icon">
@@ -1753,6 +1872,34 @@
     </div>
 </footer>
 
+<!-- View Details Modal -->
+<div id="details-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2 class="modal-title" id="modal-crop-name">Crop Details</h2>
+        </div>
+        <img id="modal-crop-image" class="modal-image" src="" alt="Crop Image">
+        <div class="modal-body">
+            <table class="crop-details-table" id="crop-details-table">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name Of Product</th>
+                        <th>Type Of Sigment</th>
+                    </tr>
+                </thead>
+                <tbody id="crop-details-body">
+                    <!-- Details will be populated here -->
+                </tbody>
+            </table>
+            <div id="no-products-message" class="no-products" style="display: none;">
+                No products available for this crop.
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Admin Panel Toggle -->
 <div class="admin-toggle">
     <i class="fas fa-cog"></i>
@@ -1950,6 +2097,303 @@
 
     gtag('config', 'G-DELWFL3WZ9');
 </script>
+
+<script>
+    // Crop data from your table
+    const cropData = {
+        "Beet Root": [
+            { productName: "Beetki", segmentType: "" }
+        ],
+        "Bitter Gourd": [
+            { productName: "Mantra 404", segmentType: "Chuchu" },
+            { productName: "Mantra 505", segmentType: "Chuchu" },
+            { productName: "Mantra 20;20", segmentType: "Rushan" },
+            { productName: "Mantra 40;40", segmentType: "Rushan" },
+            { productName: "Konark", segmentType: "Aakash" },
+            { productName: "Sanchi", segmentType: "Amber" }
+        ],
+        "Bottle Gourd": [
+            { productName: "Pinaki", segmentType: "" },
+            { productName: "Yogita", segmentType: "" },
+            { productName: "Uma", segmentType: "" }
+        ],
+        "Cabbage": [
+            { productName: "Emerald Green", segmentType: "" },
+            { productName: "Olive Green", segmentType: "" }
+        ],
+        "Capsicum": [
+            { productName: "Capsi Plus", segmentType: "" },
+            { productName: "Bell Magic", segmentType: "" }
+        ],
+        "Carrot": [
+            { productName: "Zest", segmentType: "" },
+            { productName: "Amber", segmentType: "" }
+        ],
+        "Cauliflower": [
+            { productName: "Himgiri", segmentType: "" },
+            { productName: "Himsikha", segmentType: "" }
+        ],
+        "Cucumber": [
+            { productName: "Vani 08", segmentType: "" },
+            { productName: "Gouri", segmentType: "white" },
+            { productName: "Savira", segmentType: "" },
+            { productName: "Urmila 008", segmentType: "" }
+        ],
+        "Hot Pepper": [
+            { productName: "Bhavya", segmentType: "Lucky Kanta" },
+            { productName: "Ananta Green", segmentType: "GREEN FRESH" },
+            { productName: "Ratna Priya", segmentType: "shark" },
+            { productName: "Varahi", segmentType: "Padmini" },
+            { productName: "Satya 72", segmentType: "720" },
+            { productName: "Yati 12", segmentType: "amba" },
+            { productName: "Aparna", segmentType: "versha" },
+            { productName: "Sundari", segmentType: "divy tej" },
+            { productName: "Priyanshi", segmentType: "Pranjal" },
+            { productName: "Mantra 2070", segmentType: "divya" },
+            { productName: "Sunda 03", segmentType: "1003" },
+            { productName: "Shivangi", segmentType: "Sonal" }
+        ],
+        "Marigold": [
+            { productName: "Golden Glow", segmentType: "Orange" },
+            { productName: "Mari-Shine", segmentType: "Yellow" }
+        ],
+        "Muskmelon": [
+            { productName: "Honey Bite", segmentType: "" },
+            { productName: "Golden Gleder", segmentType: "" },
+            { productName: "Juicy-Joy", segmentType: "" },
+            { productName: "Melon-Mist", segmentType: "" }
+        ],
+        "Okra": [
+            { productName: "Sharshti", segmentType: "Radhika Nayan" },
+            { productName: "Drashti", segmentType: "" },
+            { productName: "Bhumija", segmentType: "" },
+            { productName: "Vaidehi", segmentType: "" }
+        ],
+        "Pumpkin": [
+            { productName: "Bhandari", segmentType: "" },
+            { productName: "Dragon", segmentType: "" }
+        ],
+        "Sponge Gourd": [
+            { productName: "Bela", segmentType: "White laining" },
+            { productName: "Shlok", segmentType: "Alok" },
+            { productName: "Nagdhari", segmentType: "" },
+            { productName: "Malini", segmentType: "" }
+        ],
+        "Ridge Gourd": [
+            { productName: "Anupa", segmentType: "" },
+            { productName: "Bhavini", segmentType: "" }
+        ],
+        "Radish": [
+            { productName: "White Dish", segmentType: "" },
+            { productName: "White Choice", segmentType: "" }
+        ],
+        "Tomato": [
+            { productName: "Raghav", segmentType: "" },
+            { productName: "Vaman", segmentType: "" },
+            { productName: "Veera", segmentType: "" },
+            { productName: "Mantra Deshi", segmentType: "" }
+        ],
+        "Water Mellon": [
+            { productName: "Honey Max", segmentType: "Varad" },
+            { productName: "Bhadra", segmentType: "Virat Shivneri" },
+            { productName: "Bheema", segmentType: "" },
+            { productName: "Rudraa", segmentType: "" }
+        ],
+        "Coriander": [
+            { productName: "Aroma 30", segmentType: "" }
+        ],
+        "French Bean": [
+            { productName: "Rashili", segmentType: "" },
+            { productName: "Mulayam", segmentType: "" }
+        ],
+        "Onion": [
+            { productName: "Super Grower", segmentType: "nasik lal Super Gold" },
+            { productName: "Pink Grower", segmentType: "Nasik Gulabi Fursungi" },
+            { productName: "Prachand", segmentType: "Nasik lal Kum Kum" },
+            { productName: "Prabal", segmentType: "Fursungi" },
+            { productName: "Grow-N53", segmentType: "" }
+        ],
+        "Spinach": [
+            { productName: "Ever Green", segmentType: "" },
+            { productName: "Green Veil", segmentType: "" }
+        ],
+        "Brinjal": [
+            { productName: "Brownie", segmentType: "" },
+            { productName: "Brijesh", segmentType: "Hara" },
+            { productName: "Darsh", segmentType: "" }
+        ],
+        "Cluster Beans": [
+            { productName: "Ranuka", segmentType: "" }
+        ],
+        "Dolicus": [
+            { productName: "Bhawna", segmentType: "" }
+        ],
+        "Sweet Corn": [
+            { productName: "Swad", segmentType: "" }
+        ]
+    };
+
+    // Get modal elements
+    const modal = document.getElementById('details-modal');
+    const modalTitle = document.getElementById('modal-crop-name');
+    const modalImage = document.getElementById('modal-crop-image');
+    const cropDetailsBody = document.getElementById('crop-details-body');
+    const closeModal = document.querySelector('.close-modal');
+    const noProductsMessage = document.getElementById('no-products-message');
+
+    // Function to show crop details in modal
+    function showCropDetails(cropName, productCardElement = null) {
+        // Clean the crop name
+        const cleanCropName = cropName.replace(/\s*Seeds\s*$/i, '').trim();
+
+        // Get the crop data
+        const crop = cropData[cleanCropName];
+
+        // Clear previous content
+        cropDetailsBody.innerHTML = '';
+
+        if (crop && crop.length > 0) {
+            // Show the table and hide the no products message
+            document.querySelector('.crop-details-table').style.display = 'table';
+            noProductsMessage.style.display = 'none';
+
+            // Set modal title
+            modalTitle.textContent = `${cleanCropName} Varieties`;
+
+            // Set the image if we have the product card element
+            if (productCardElement) {
+                const img = productCardElement.querySelector('img');
+                if (img) {
+                    modalImage.src = img.src;
+                    modalImage.alt = cleanCropName;
+                    modalImage.style.display = 'block';
+                } else {
+                    modalImage.style.display = 'none';
+                }
+            } else {
+                // Try to find the image by searching through all product cards
+                const allProductCards = document.querySelectorAll('.product-card');
+                let foundImg = null;
+
+                for (const card of allProductCards) {
+                    const titleElement = card.querySelector('.product-title');
+                    if (titleElement && titleElement.textContent.trim() === cropName) {
+                        const img = card.querySelector('img');
+                        if (img) {
+                            foundImg = img;
+                            break;
+                        }
+                    }
+                }
+
+                if (foundImg) {
+                    modalImage.src = foundImg.src;
+                    modalImage.alt = cleanCropName;
+                    modalImage.style.display = 'block';
+                } else {
+                    modalImage.style.display = 'none';
+                }
+            }
+
+            // Populate the table with products
+            crop.forEach((product, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${product.productName}</td>
+                    <td>${product.segmentType || 'N/A'}</td>
+                `;
+                cropDetailsBody.appendChild(row);
+            });
+        } else {
+            // No products found
+            document.querySelector('.crop-details-table').style.display = 'none';
+            noProductsMessage.style.display = 'block';
+            noProductsMessage.textContent = `No varieties found for ${cleanCropName}`;
+            modalTitle.textContent = `${cleanCropName} Details`;
+            modalImage.style.display = 'none';
+        }
+
+        // Show the modal
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal when clicking the X
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Add event listeners to all "View Details" buttons
+    function setupViewDetailsButtons() {
+        // Get all "View Details" buttons
+        const viewDetailsBtns = document.querySelectorAll('.btn');
+
+        viewDetailsBtns.forEach(button => {
+            // Only attach to buttons that say "View Details"
+            if (button.textContent.trim() === 'View Details') {
+                // Remove existing event listener to avoid duplicates
+                button.removeEventListener('click', handleViewDetailsClick);
+                button.addEventListener('click', handleViewDetailsClick);
+            }
+        });
+    }
+
+    function handleViewDetailsClick(event) {
+        event.preventDefault();
+
+        // Find the product card
+        const productCard = this.closest('.product-card');
+        if (!productCard) return;
+
+        // Get the product title
+        const productTitleElement = productCard.querySelector('.product-title');
+        if (!productTitleElement) return;
+
+        const cropName = productTitleElement.textContent.trim();
+
+        showCropDetails(cropName, productCard);
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        setupViewDetailsButtons();
+
+        // Also set up for admin-added products
+        document.getElementById('add-product')?.addEventListener('click', function() {
+            setTimeout(setupViewDetailsButtons, 100);
+        });
+    });
+
+    // Also set up for products in the slider (since they might be loaded dynamically)
+    $(document).ready(function() {
+        // After slick slider is initialized
+        setTimeout(setupViewDetailsButtons, 500);
+
+        // Re-setup when slider changes (optional)
+        $('.product-slider').on('afterChange', function() {
+            setTimeout(setupViewDetailsButtons, 100);
+        });
+    });
+</script>
+
 
 </body>
 </html>
